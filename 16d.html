@@ -1,0 +1,145 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>16d Challenge Exercise</title>
+    <style>
+      body {
+        box-sizing: border-box;
+        font-family: Arial, Helvetica, sans-serif;
+        margin: 0;
+        padding: 0;
+      }
+
+      .container {
+        display: flex;
+        flex-direction: row;
+        width: 450px;
+        margin: 10px 0px 0px 30px;
+        column-gap: 10px;
+      }
+
+      .image {
+        width: 60px;
+      }
+
+      img {
+        height: 60px;
+        width: 60px;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+
+      .content {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .tweet {
+        display: flex;
+        flex-direction: column;
+        row-gap: 8px;
+      }
+
+      .username {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      span {
+        font-weight: 400;
+        color: rgb(111, 111, 111);
+      }
+
+      .link {
+        display: flex;
+        flex-direction: row;
+        margin-top: 15px;
+        border: 1px solid rgb(200, 200, 200);
+        border-radius: 15px;
+        overflow: hidden;
+      }
+
+      .grey-box {
+        width: 170px;
+        height: 100px;
+        background-color: rgb(220, 220, 220);
+        align-self: flex-start;
+      }
+
+      .video-title {
+        display: flex;
+        flex-direction: column;
+        row-gap: 4px;
+        margin: 15px 10px 10px 15px;
+      }
+
+      .video-title div:first-child {
+        color: rgb(111, 111, 111);
+      }
+
+      .tooltip-container{
+        position: relative;
+        display: inline-block;
+        cursor: pointer;
+      }
+
+      .tooltip{
+        position: absolute;
+        pointer-events: none;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        width: 250px;
+        height: 120px;
+        bottom: -150px;
+        left: -20px;
+        right: 0px;
+        background-color: rgba(255, 255, 255, 1);
+        box-shadow: 2px 3px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 10px;
+        transition: opacity 0.60s ease;
+        opacity: 0;
+      }
+
+      .tooltip-container:hover .tooltip{
+        opacity: 1;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="image">
+        <div class="tooltip-container">
+          <img src="images/7g.jpg" alt="Image is missing" />
+          <div class="tooltip">
+            <img src="images/7g.jpg" width="50px">
+            <div>10M followers</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="content">
+        <div class="tweet">
+          <div class="username">
+            supersimple.dev <span>@SuperSimpleDev</span>
+          </div>
+          <div class="text">
+            What is backend web development? A complete overview. New video is
+            up!
+          </div>
+        </div>
+
+        <div class="link">
+          <div class="grey-box"></div>
+          <div class="video-title">
+            <div>youtube.com</div>
+            <div>Backend web development - a complete overview (2021)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
