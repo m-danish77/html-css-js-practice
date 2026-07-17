@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Box Movement</title>
+
+    <style>
+      .square-box {
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        width: 100px;
+        height: 100px;
+        background-color: red;
+      }
+
+      .square-box:active {
+        animation: moveBox 4s ease-in-out;
+      }
+
+      @keyframes moveBox {
+        /* Start */
+        0% {
+          left: 10px;
+          top: 10px;
+        }
+
+        /* Move LEFT */
+        25% {
+          left: calc(100% - 110px);
+          top: 10px;
+        }
+
+        /* Move DOWN */
+        50% {
+          left: calc(100% - 110px);
+          top: calc(100% - 110px);
+        }
+
+        /* Move RIGHT */
+        75% {
+          left: 10px;
+          top: calc(100% - 110px);
+        }
+
+        /* Move UP */
+        100% {
+          left: 10px;
+          top: 10px;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="square-box"></div>
+  </body>
+</html>
