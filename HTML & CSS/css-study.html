@@ -23,6 +23,27 @@
 
         background: radial-gradient(circle, red, blue);
       }
+
+      .flexbox {
+        display: flex;
+        height: 100px;
+        background-color: red;
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-evenly;
+      }
+
+      .gallery {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .card {
+        padding: 20px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+      }
     </style>
   </head>
   <body>
@@ -33,5 +54,19 @@
     </center>
     <img src="images/7g.jpg" alt="A cute cat" />
     <div class="box"></div>
+
+    <div class="flexbox"><span>Hello</span> <span>World</span></div>
+
+    <br />
+    <br />
+
+    <div class="gallery">
+      <div class="card">Card 1</div>
+      <div class="card">Card 2</div>
+      <div class="card">Card 3</div>
+      <div class="card">Card 4</div>
+      <div class="card">Card 5</div>
+      <div class="card">Card 6</div>
+    </div>
   </body>
 </html>
