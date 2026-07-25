@@ -1,0 +1,23 @@
+{
+  "name": "html-css-js-practice",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {
+    "start": "nodemon Javascript/1.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/m-danish77/html-and-css-practice.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/m-danish77/html-and-css-practice/issues"
+  },
+  "homepage": "https://github.com/m-danish77/html-and-css-practice#readme",
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
