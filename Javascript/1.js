@@ -1,9 +1,6 @@
-function hello(name, greeting) {
-  return greeting("Boss") + " " + name;
+// Solving 1st Question of JS
+function isEven(number) {
+  return number % 2 === 0;
 }
 
-function greeting(eGreeting) {
-  return "Hello!" + " " + eGreeting;
-}
-
-console.log(hello("Danish", greeting));
+console.log(isEven(0));
