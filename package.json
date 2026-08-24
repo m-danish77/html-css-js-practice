@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "start": "nodemon Javascript/1.js"
+    "start": "nodemon Javascript/practice.js"
   },
   "repository": {
     "type": "git",
@@ -12,7 +12,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "type": "commonjs",
+  "type": "module",
   "bugs": {
     "url": "https://github.com/m-danish77/html-and-css-practice/issues"
   },
