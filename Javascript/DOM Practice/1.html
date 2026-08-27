@@ -4,20 +4,21 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>DOM Exercise</title>
-    <style></style>
+    <style>
+      .h1 {
+        color: red;
+      }
+    </style>
   </head>
   <body>
-    <form id="form">
-      <input type="text" />
-      <button>Submit</button>
-    </form>
+    <h1 class="h1">The Button is not Clicked.</h1>
+    <button>Click Me!</button>
     <script>
-      const form = document.querySelector("#form");
+      const heading = document.querySelector(".h1");
+      const button = document.querySelector("button");
 
-      form.addEventListener("submit", (event) => {
-        event.preventDefault();
-
-        console.log("Form submitted without page reload");
+      button.addEventListener("click", () => {
+        heading.textContent = "The Button is clicked.";
       });
     </script>
   </body>

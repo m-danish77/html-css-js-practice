@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Small DOM Exercise</title>
+  </head>
+  <body>
+    <input type="text" placeholder="Enter a task" />
+    <button>Add</button>
+    <ul></ul>
+    <script>
+      const input = document.querySelector("input");
+      const button = document.querySelector("button");
+      const unList = document.querySelector("ul");
+
+      button.addEventListener("click", () => {
+        if (input.value !== "") {
+          const li = document.createElement("li");
+          li.textContent = input.value.trim();
+          unList.append(li);
+          input.value = "";
+        }
+      });
+
+      unList.addEventListener("click", (e) => {
+        if (e.target.matches("li")) {
+          e.target.remove();
+        }
+      });
+    </script>
+  </body>
+</html>
