@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List Try</title>
+    <style>
+      .completed {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <input type="text" placeholder="Add or update task" />
+    <button>Add</button>
+    <ul></ul>
+    <script>
+      const input = document.querySelector("input");
+      const button = document.querySelector("button");
+      const unList = document.querySelector("ul");
+
+      let editingTask = null;
+
+      // Add or Update
+      button.addEventListener("click", (e) => {
+        if (input.value.trim() === "") return;
+
+        // Update
+        if (editingTask) {
+          editingTask.textContent = input.value.trim();
+          editingTask = null;
+          button.textContent = "Add";
+          input.value = "";
+        } else {
+          // Add
+          unList.innerHTML += `
+            <li>
+              <span>${input.value.trim()}</span>
+              <button class="edit">Edit</button>
+              <button class="delete">Delete</button>
+            </li>
+          `;
+          input.value = "";
+        }
+      });
+
+      // Delete Task
+      unList.addEventListener("click", (e) => {
+        if (e.target.classList.contains("delete")) {
+          e.target.parentElement.remove();
+        }
+      });
+
+      // Edit task
+      unList.addEventListener("click", (e) => {
+        if (e.target.classList.contains("edit")) {
+          editingTask = e.target.previousElementSibling;
+          input.value = editingTask.textContent;
+          button.textContent = "save";
+        }
+      });
+
+      // Mark Completed
+      unList.addEventListener("click", (e) => {
+        if (e.target.tagName === "SPAN") {
+          e.target.classList.toggle("completed");
+        }
+      });
+    </script>
+  </body>
+</html>
