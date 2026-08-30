@@ -63,7 +63,17 @@
       // Mark Completed
       unList.addEventListener("click", (e) => {
         if (e.target.tagName === "SPAN") {
-          e.target.classList.toggle("completed");
+          let targetedSpan = e.target;
+          if (!e.target.classList.contains("completed")) {
+            targetedSpan.classList.add("completed");
+            targetedSpan.nextElementSibling.remove();
+          } else {
+            targetedSpan.classList.remove("completed");
+            const editButton = document.createElement("button");
+            editButton.textContent = "Edit";
+            editButton.classList.add("edit");
+            targetedSpan.after(editButton);
+          }
         }
       });
     </script>
