@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Form Validation</title>
+  </head>
+  <body>
+    <form id="personal-form">
+      <p class="error"></p>
+      <input type="text" placeholder="Enter your name" />
+      <input type="email" placeholder="Enter your email" />
+      <input type="password" placeholder="Enter your password" />
+      <button>submit</button>
+    </form>
+
+    <script>
+      const personalForm = document.querySelector("#personal-form");
+      const pName = document.querySelector('input[type="text"]');
+      const email = document.querySelector('input[type="email"]');
+      const password = document.querySelector('input[type="password"]');
+      const error = document.querySelector(".error");
+
+      function validatingPassword(password) {
+        if (password === "") {
+          error.textContent += "Password is required ";
+        }
+        if (password.length < 6) {
+          error.textContent += "Password must be longer than 6 characters ";
+        }
+        const capitalLetters = /[A-Z]/;
+        if (!capitalLetters.test(password)) {
+          error.textContent += "At least one Capital letter required";
+        }
+      }
+
+      personalForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        error.textContent = "";
+
+        if (pName.value === "") {
+          error.textContent += "Name is required ";
+        }
+
+        if (email.value === "") {
+          error.textContent += "Email is required ";
+        }
+
+        validatingPassword(password.value);
+      });
+    </script>
+  </body>
+</html>
