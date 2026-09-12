@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Todo List Try</title>
+    <style>
+      .completed {
+        text-decoration: line-through;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello world</h1>
+    <input type="text" placeholder="Add or update task" />
+    <button>Add</button>
+    <ul></ul>
+    <script>
+      // this is the structre of todos
+      // const todos = [{text: "JS practice", completed: false}, {...}]
+      // We take out todos from localstorage convert it into JS object then render todos 1 by one, then when we do any change we push it to todos and save the todos and render the page again.
+
+      const todos = JSON.parse(localStorage.getItem("todos")) || [];
+      const input = document.querySelector("input");
+      const button = document.querySelector("button");
+      const unList = document.querySelector("ul");
+
+      let editingTask = null;
+
+      function saveTodos() {
+        localStorage.setItem("todos", JSON.stringify(todos));
+      }
+
+      function renderTodos() {
+        unList.innerHTML = "";
+        todos.forEach((todo) => {
+          const li = document.createElement("li");
+
+          const span = document.createElement("span");
+          span.textContent = todo.text;
+          if (todo.completed) span.classList.add("completed");
+
+          const delBtn = document.createElement("button");
+          delBtn.textContent = "delete";
+          delBtn.classList.add("delete");
+
+          li.append(span);
+          if (!todo.completed) {
+            const edit = document.createElement("button");
+            edit.textContent = "edit";
+            edit.classList.add("edit");
+            li.append(edit);
+          }
+          li.append(delBtn);
+          unList.append(li);
+        });
+      }
+
+      // Add or Update
+      button.addEventListener("click", (e) => {
+        if (input.value.trim() === "") return;
+
+        // Update
+        if (editingTask !== null) {
+          todos[editingTask].text = input.value.trim();
+          editingTask = null;
+          button.textContent = "Add";
+          input.value = "";
+        } else {
+          // Add
+          todos.push({ text: input.value.trim(), completed: false });
+        }
+        saveTodos();
+        renderTodos();
+        input.value = "";
+      });
+
+      // Delete Task
+      unList.addEventListener("click", (e) => {
+        if (e.target.classList.contains("delete")) {
+          let index = [...unList.children].indexOf(e.target.parentElement);
+          todos.splice(index, 1);
+          saveTodos();
+          renderTodos();
+        }
+      });
+
+      // Edit task
+      unList.addEventListener("click", (e) => {
+        if (e.target.classList.contains("edit")) {
+          let index = [...unList.children].indexOf(e.target.parentElement);
+          editingTask = index;
+          input.value = todos[editingTask].text;
+          button.textContent = "save";
+        }
+      });
+
+      // Mark Completed
+      unList.addEventListener("click", (e) => {
+        if (e.target.tagName === "SPAN") {
+          let index = [...unList.children].indexOf(e.target.parentElement);
+          todos[index].completed = !todos[index].completed;
+          saveTodos();
+          renderTodos();
+        }
+      });
+      renderTodos();
+    </script>
+  </body>
+</html>
