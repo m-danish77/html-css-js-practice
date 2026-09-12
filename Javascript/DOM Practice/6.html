@@ -22,32 +22,44 @@
       const error = document.querySelector(".error");
 
       function validatingPassword(password) {
+        let valid = true;
         if (password === "") {
           error.textContent += "Password is required ";
+          valid = false;
         }
         if (password.length < 6) {
           error.textContent += "Password must be longer than 6 characters ";
+          valid = false;
         }
         const capitalLetters = /[A-Z]/;
         if (!capitalLetters.test(password)) {
           error.textContent += "At least one Capital letter required";
+          valid = false;
         }
+        return valid;
       }
 
       personalForm.addEventListener("submit", (e) => {
-        e.preventDefault();
-
+        let valid = true;
         error.textContent = "";
 
         if (pName.value === "") {
           error.textContent += "Name is required ";
+          valid = false;
         }
 
         if (email.value === "") {
           error.textContent += "Email is required ";
+          valid = false;
         }
 
-        validatingPassword(password.value);
+        if (!validatingPassword(password.value)) {
+          valid = false;
+        }
+
+        if (!valid) {
+          e.preventDefault();
+        }
       });
     </script>
   </body>
